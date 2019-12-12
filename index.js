@@ -168,3 +168,8 @@ function main() {
 }
 
 main();
+
+
+// #4 removes duplications by checking the current value vs. the next value, 
+// and if they are equal,
+// it will set the next value equal to the next.next value.
