@@ -150,6 +150,15 @@ class LinkedList {
       this.head = node;
     }
   }
+  middleOfList() {
+    let currNode = this.head;
+    let size = this.size();
+    size = Math.floor(size/2);
+    for(let i = 0; i < size; i++) {
+      currNode = currNode.next;
+    }
+    return currNode;
+  }
   findThirdFromLast() {
     let currNode = this.head;
     if(currNode.next === null) {
@@ -187,7 +196,8 @@ function main() {
   //   console.log(SLL.findPrevious('Hotdog'));
   // SLL.reverse(SLL.head);
   //   console.log(SLL.findLast());
-  console.log(SLL.findThirdFromLast());
+  //   console.log(SLL.findThirdFromLast());
+  console.log(SLL.middleOfList());
   SLL.display();
 }
 
