@@ -121,6 +121,26 @@ class LinkedList {
     }
     return false;
   }
+  findPrevious(item) {
+    let currNode = this.head;
+    if(currNode === null) {
+      return 'empty list';
+    } else {
+      let tempNode = currNode;
+      while (currNode.value !== item) {
+        tempNode = currNode;
+        currNode = currNode.next;
+      }
+      return tempNode;
+    }
+  }
+  findLast() {
+    let currNode = this.head;
+    while (currNode.next !== null) {
+      currNode = currNode.next;
+    }
+    return currNode;
+  }
 }
 
 let ll = new LinkedList;
@@ -137,11 +157,13 @@ function main() {
   SLL.insertLast('Husker');
   SLL.insertLast('Starbuck');
   SLL.insertLast('Tauhida');
-  SLL.remove('squirrel');
+  //   SLL.remove('squirrel');
   SLL.insertBefore('Athena', 'Boomer');
   SLL.insertAfter('Hotdog', 'Helo');
   SLL.insertAt('Kat', 2);
   SLL.remove('Tauhida');
+  console.log(SLL.findPrevious('Hotdog'));
+  console.log(SLL.findLast());
   SLL.display();
 }
 
