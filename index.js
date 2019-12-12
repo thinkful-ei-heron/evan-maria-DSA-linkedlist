@@ -172,6 +172,29 @@ class LinkedList {
     }
     return currNode;
   }
+  cycle(node) {
+    if(this.head === null) {
+      this.insertFirst(node.value);
+    } else {
+      let final = this.head;
+      while (final.next !== null) {
+        final = final.next;
+      }
+      final.next = node;
+    }
+  }
+  cycleList() {
+    let object = {};
+    let currentHead = this.head;
+    while(currentHead.next !== null) {
+      if(object[currentHead.value]) {
+        return true;
+      }
+      object[currentHead.value] = currentHead.value;
+      currentHead = currentHead.next;
+    }
+    return false;
+  }
 }
 
 let ll = new LinkedList;
@@ -197,7 +220,9 @@ function main() {
   // SLL.reverse(SLL.head);
   //   console.log(SLL.findLast());
   //   console.log(SLL.findThirdFromLast());
-  console.log(SLL.middleOfList());
+  //   console.log(SLL.middleOfList());
+  console.log('Should display false below');
+  console.log(SLL.cycleList());
   SLL.display();
 }
 
@@ -207,3 +232,19 @@ main();
 // #4 removes duplications by checking the current value vs. the next value, 
 // and if they are equal,
 // it will set the next value equal to the next.next value.
+
+//#8
+function cycleLinkedList() {
+  let cycleList = new LinkedList();
+  cycleList.insertLast('cat');
+  cycleList.insertLast('dog');
+  cycleList.insertLast('test');
+  cycleList.insertLast('info');
+  cycleList.insertLast('final');
+  cycleList.insertLast('cat');
+  cycleList.cycle('final');
+  console.log('Should display true below');
+  console.log(cycleList.cycleList());
+}
+
+cycleLinkedList();
