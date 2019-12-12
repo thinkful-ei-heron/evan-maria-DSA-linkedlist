@@ -141,6 +141,28 @@ class LinkedList {
     }
     return currNode;
   }
+  reverse (node) {
+    if (node.next !== null) {
+      this.reverse(node.next);
+      node.next.next = node;
+      node.next = null;
+    } else {
+      this.head = node;
+    }
+  }
+  findThirdFromLast() {
+    let currNode = this.head;
+    if(currNode.next === null) {
+      return null;
+    }
+    if (currNode.next.next === null) {
+      return null;
+    }
+    while(currNode.next.next.next !== null) {
+      currNode = currNode.next;
+    }
+    return currNode;
+  }
 }
 
 let ll = new LinkedList;
@@ -162,8 +184,10 @@ function main() {
   SLL.insertAfter('Hotdog', 'Helo');
   SLL.insertAt('Kat', 2);
   SLL.remove('Tauhida');
-  console.log(SLL.findPrevious('Hotdog'));
-  console.log(SLL.findLast());
+  //   console.log(SLL.findPrevious('Hotdog'));
+  // SLL.reverse(SLL.head);
+  //   console.log(SLL.findLast());
+  console.log(SLL.findThirdFromLast());
   SLL.display();
 }
 
