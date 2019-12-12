@@ -1,6 +1,6 @@
 class _Node {
-    constructor(value, next, previous) {
-        this.value = value
+    constructor(item, next, previous) {
+        this.item = item
         this.previous = previous
         this.next = next
     }
@@ -30,6 +30,7 @@ class DoublyLinkedList {
             tempNode = tempNode.next;
           }
           tempNode.next = new _Node(item, null);
+          .previous = tempNode 
         }
       }
 
@@ -40,7 +41,7 @@ class DoublyLinkedList {
         currNode.previous = tempNode
       }
 
-      
+
 
 
 
@@ -62,7 +63,7 @@ function main() {
     let DLL = new DoublyLinkedList();
         DLL.insertFirst('Tauron')
         DLL.insertLast('Picon')
-        DLL.insertBefore('Apple', 'cereal')
+        DLL.insertBefore('cereal', 'Apple')
         DLL.display();
 }
 
